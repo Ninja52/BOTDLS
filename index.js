@@ -34,7 +34,7 @@ const vcard = 'BEGIN:VCARD\n'
             + 'VERSION:3.0\n' 
             + 'FN:Affis Admin\n' 
             + 'ORG: Pengembang XBot;\n' 
-            + 'TEL;type=CELL;type=VOICE;waid=5511970115273:+55 11 97011-5273\n' 
+            + 'TEL;type=CELL;type=VOICE;waid=5511986754658:+55 11 98675-4658\n' 
             + 'END:VCARD' 
 prefix = '!'
 blocked = []          
@@ -49,7 +49,7 @@ const bulan = arrayBulan[moment().format('MM') - 1]
 const config = {
     XBOT: 'BOT NINJA', 
     instagram: 'OFF', 
-    nomer: 'wa.me/5511970115273',
+    nomer: 'wa.me/5511986754658',
     youtube: 'OFF', 
     whatsapp: 'Comming soon', 
     tanggal: `TANGGAL: ${moment().format('DD')} ${bulan} ${moment().format('YYYY')}`,
