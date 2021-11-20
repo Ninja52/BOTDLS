@@ -48,7 +48,7 @@ const arrayBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Jul
 const bulan = arrayBulan[moment().format('MM') - 1]
 const config = {
     XBOT: 'BOT NINJA', 
-    instagram: 'OFF', 
+    instagram: 'https://instagram.com/douglas_.zo', 
     nomer: 'wa.me/5511986754658',
     youtube: 'OFF', 
     whatsapp: 'Comming soon', 
@@ -79,12 +79,12 @@ const client = new WAConnection()
 
 client.on('qr', qr => {
    qrcode.generate(qr, { small: true })
-   console.log(`[ ${time} ] QR code is ready, subrek dulu yak ambipi team`)
+   console.log(`[ ${time} ] O código QR está pronto.`)
 })
 
 client.on('credentials-updated', () => {
    const authInfo = client.base64EncodedAuthInfo()
-   console.log(`credentials updated!`)
+   console.log(`credenciais atualizadas!`)
 
    fs.writeFileSync('./session.json', JSON.stringify(authInfo, null, '\t'))
 })
@@ -152,18 +152,18 @@ client.on('group-participants-update', async (anu) => {
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
-				wait: '❬❗❭AGUARDE  ENQUANTO ESTOU PROCESSANDO❬❗❭',
+				wait: '❬ ❗ ❭ AGUARDE  ENQUANTO ESTOU PROCESSANDO',
 				success: '️❬ ✔ ❭ PRONTINHO 🖤',
 				error: {
 					stick: 'Eu falhei :( desculpa',
 					Iv: 'Desculpe, o link está inválido☹️'
 				},
 				only: {
-					group: '❬❗❭ COMANDO SÓ PODE SER EXECUTADO EM GRUPOS❬❗❭ ',
-					ownerG: '❬❗❭ COMANDO EXCLUSIVO PARA O PROPRIETÁRIO DO BOT.❬❗❭ ',
-					ownerB: '❬❗❭  COMANDO EXCLUSIVO PARA O PROPRIETÁRIO DO BOT.❬❗❭  ',
-					admin: ' ❬ ⚠️ ❭ COMANDO PERMITIDO SOMENTE PARA ADMS ❬ ⚠️ ❭ ',
-					Badmin: '❬❗❭O BOT PRECISA SER ADEMAR ;3 '
+					group: '❬ ❗ ❭ COMANDO SÓ PODE SER EXECUTADO EM GRUPOS.',
+					ownerG: '❬ ❗ ❭ COMANDO EXCLUSIVO PARA O PROPRIETÁRIO DO BOT.',
+					ownerB: '❬ ❗ ❭ COMANDO EXCLUSIVO PARA O PROPRIETÁRIO DO BOT.',
+					admin: ' ❬ ⚠️ ❭ COMANDO PERMITIDO SOMENTE PARA ADMS.',
+					Badmin: '❬ ❗ ❭ O BOT PRECISA SER ADEMAR ;3'
 				}
 			}
 
@@ -466,7 +466,7 @@ case 'lofi':
 					if (args.length < 1) return
 					if (!isOwner) return reply(mess.only.ownerB)
 					prefix = args[0]
-					reply(`sigla de comandos alterada para : ${prefix}`)
+					reply(`prefixo de comandos alterado para : ${prefix}`)
 					break 	
 				case 'hilih': 
 					if (args.length < 1) return reply('qual txt deseja lindx?')
@@ -489,7 +489,7 @@ case 'lofi':
 					break
 				case 'clearall':
 				case 'limpar':
-					if (!isOwner) return reply(' quem e tu?')
+					if (!isOwner) return reply('quem e tu?')
 					anu = await client.chats.all()
 					client.setMaxListeners(25)
 					for (let _ of anu) {
@@ -515,8 +515,8 @@ case 'lofi':
 				await client.client.leaveGroup(from, 'adeus...', groupId)
                     break
 				case 'bc': 
-					if (!isOwner) return reply(' so meu criador') 
-					if (args.length < 1) return reply('.......')
+					if (!isOwner) return reply('só meu criador') 
+					if (args.length < 1) return reply('Digite uma mensagem')
 					anu = await client.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
@@ -527,7 +527,7 @@ case 'lofi':
 						reply('transmissao feita')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `❮ msg de transmissao❯\n\n${body.slice(4)}`)
+							sendMess(_.jid, `❮mensagem de transmissao❯\n\n${body.slice(4)}`)
 						}
 						reply('tm feita')
 					}
@@ -634,7 +634,7 @@ case 'lofi':
 						client.groupMakeAdmin(from, mentioned)
 					}
 					break	
-			     	case 'kick':
+			case 'kick':
 			case 'ban':
 			case 'remover':
 					if (!isGroup) return reply(mess.only.group)
@@ -721,7 +721,7 @@ case 'lofi':
 				case 'clone':
 				case 'clonar':
 					if (!isGroup) return reply(mess.only.group)
-					if (!isOwner) return reply(' *quem e tu? ?') 
+					if (!isOwner) return reply('*quem é tu?') 
 					if (args.length < 1) return reply(' *TAG do membro clonada!* ')
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag cvk')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
@@ -757,7 +757,7 @@ case 'lofi':
 						console.log(muehe)
 						reply(muehe)
 					} else {
-						console.log(color('[ERROR]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
+						console.log(color('[ERROR]','red'), 'Comando não registrado de', color(sender.split('@')[0]))
 					}
 					}
 		} catch (e) {
